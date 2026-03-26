@@ -1,0 +1,9 @@
+# @package _global_
+defaults:
+  - /experiment/bias_mitigation/Heart/heart.yaml
+
+hydra:
+  sweeper:
+    params:
+      data/cleaning: multi_error_types,multi_error_types_flip_order
+      exp.seed: 101, 202, 303, 404, 505

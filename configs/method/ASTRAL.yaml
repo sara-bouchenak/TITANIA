@@ -1,0 +1,5 @@
+defaults:
+  - default.yaml
+  - override hyperparameters/server: ASTRAL.yaml
+
+name: src.FL_core.FL_algorithms.ASTRAL.ASTRAL

@@ -1,0 +1,6 @@
+run:
+  dir: ${paths.root_dir}/outputs/overall_impact/${data.dataset.dataset_name}/${now:%Y-%m-%d}_${now:%H-%M-%S}
+
+sweep:
+  dir: ${paths.root_dir}/outputs/overall_impact/${data.dataset.dataset_name}/${now:%Y-%m-%d}_${now:%H-%M-%S}
+  subdir: model=${keep_last_str:${method.hyperparameters.model}}/data_cleaning=${data.cleaning.name}/exp_seed=${exp.seed},data_seed=${data.seed}

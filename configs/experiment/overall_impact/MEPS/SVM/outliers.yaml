@@ -1,0 +1,9 @@
+# @package _global_
+defaults:
+  - /experiment/overall_impact/MEPS/SVM/meps.yaml
+
+hydra:
+  sweeper:
+    params:
+      data/cleaning: OL-std-mean-G,OL-std-mean-L,OL-std-mode-G,OL-std-mode-L,OL-iqr-mean-G,OL-iqr-mean-L,OL-iqr-mode-G,OL-iqr-mode-L,OL-std-remove-G,OL-std-remove-L,OL-iqr-remove-G,OL-iqr-remove-L
+      exp.seed: 101,202,303,404,505

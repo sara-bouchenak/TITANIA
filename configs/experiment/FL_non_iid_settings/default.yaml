@@ -1,0 +1,11 @@
+# @package _global_
+defaults:
+  - override /data/others: union_clients_test_wo_val.yaml
+  - override /save: null
+  - override /eval: all.yaml
+  - override /method: default.yaml
+  - override /hydra: FL_non_iid_settings/iid.yaml
+
+protocol:
+  n_clients: 10
+  n_rounds: 150

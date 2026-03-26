@@ -1,0 +1,15 @@
+# @package _global_
+defaults:
+  - /experiment/FL_non_iid_settings/KDD/kdd.yaml
+  - override /data/distribution: iid.yaml
+  - override /data/others: union_clients_test.yaml
+  - override /hydra: FL_non_iid_settings/iid.yaml
+
+data:
+  seed: 30
+
+hydra:
+  sweeper:
+    params:
+      data/cleaning: default,multi_error_types, multi_error_types_FL,multi_error_types_flip_order, multi_error_types_FL_flip_order
+      exp.seed: 16

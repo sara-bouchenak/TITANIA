@@ -1,0 +1,7 @@
+defaults:
+  - missing_values: MV-mode-L.yaml
+  - outliers: OL-std-mode-L.yaml
+  - label_errors: LE-cleanlab.yaml
+
+name: multi_error_types_flip
+order: flip_order

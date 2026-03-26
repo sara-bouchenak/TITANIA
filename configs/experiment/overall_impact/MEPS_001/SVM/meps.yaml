@@ -1,0 +1,18 @@
+# @package _global_
+defaults:
+  - /experiment/overall_impact/MEPS_001/meps.yaml
+
+method:
+
+  hyperparameters:
+
+    model: src.FL_core.utils.net.SVM
+
+    client:
+
+      loss: torchmetrics.classification.BinaryHingeLoss
+
+      optimizer:
+        name: RMSprop
+        lr: 0.0003
+        weight_decay: 0.1

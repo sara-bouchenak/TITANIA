@@ -1,0 +1,18 @@
+# @package _global_
+defaults:
+  - /experiment/overall_impact/ARS/ars.yaml
+
+method:
+
+  hyperparameters:
+
+    model: src.FL_core.utils.net.LogRegression
+
+    client:
+
+      loss: BCELoss
+
+      optimizer:
+        name: RMSprop
+        lr: 0.01
+        weight_decay: 0

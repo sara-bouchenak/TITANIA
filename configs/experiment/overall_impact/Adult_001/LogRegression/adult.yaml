@@ -1,0 +1,18 @@
+# @package _global_
+defaults:
+  - /experiment/overall_impact/Adult_001/adult.yaml
+
+method:
+
+  hyperparameters:
+
+    model: src.FL_core.utils.net.LogRegression
+
+    client:
+
+      loss: BCELoss
+
+      optimizer:
+        name: AdamW
+        lr: 0.0001
+        weight_decay: 0

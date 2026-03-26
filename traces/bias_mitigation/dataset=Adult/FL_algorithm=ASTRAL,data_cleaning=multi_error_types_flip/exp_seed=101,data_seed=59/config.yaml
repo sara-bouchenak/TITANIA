@@ -1,0 +1,104 @@
+data:
+  cleaning:
+    label_errors:
+      correction_mode: binary_flip
+      detection_mode: cleanlab_split
+      name: local
+      seed: 101
+    missing_values:
+      correction_mode: mode
+      name: local
+    name: multi_error_types_flip
+    order: flip_order
+    outliers:
+      correction_mode: mode
+      detection_mode: std
+      name: local
+  dataset:
+    dataset_name: Adult
+    path: ./datasets/Adult/raw_data
+    sensitive_attributes:
+    - age
+    - gender
+    - race
+  distribution:
+    name: iid
+  loading:
+    save_data_after_cleaning: false
+    save_data_before_cleaning: false
+    save_dir: ./datasets/Adult/static_data_loading
+    static: false
+  others:
+    client_split: 0.2
+    client_val_split: 0.5
+    keep_test: false
+    sampling_perc: 1.0
+    server_split: 0.0
+    server_test: false
+    server_test_union: true
+    server_val_split: 0.0
+    uniform_test: false
+  seed: 59
+eval:
+  eval_every: 1
+  locals: true
+  post_fit: true
+  pre_fit: true
+  server: true
+  task: classification
+exp:
+  device: cpu
+  inmemory: true
+  seed: 101
+  train: true
+logger:
+  json_log_dir: ${paths.output_dir}
+  name: src.FL_core.utils.log.CustomLog
+method:
+  hyperparameters:
+    client:
+      batch_size: 128
+      local_epochs: 10
+      loss: BCELoss
+      optimizer:
+        lr: 0.001
+        name: SGD
+        weight_decay: 0.01
+      scheduler:
+        gamma: 1
+        name: StepLR
+        step_size: 1
+    model: src.FL_core.utils.net.LogRegression
+    net_args:
+      input_size: 100
+      num_classes: 1
+    server:
+      eps: 0.05
+      fairness_metric_name: spd
+      loss: BCELoss
+      maxiter: 10
+      mutation:
+      - 0.5
+      - 1
+      popsize: 10
+      recombination: 0.7
+      seed: 101
+      sensitive_attributes:
+      - age
+      - gender
+      - race
+      time_to_accuracy_target: 0.8
+      tol: 0.01
+      weighted: true
+      workers: -1
+  name: src.FL_core.FL_algorithms.ASTRAL.ASTRAL
+paths:
+  data_dir: ./datasets
+  log_dir: ./logs
+  output_dir: ${hydra:runtime.output_dir}
+  root_dir: .
+protocol:
+  eligible_perc: 1.0
+  n_clients: 10
+  n_rounds: 150
+save: {}

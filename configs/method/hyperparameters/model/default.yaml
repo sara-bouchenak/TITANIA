@@ -1,0 +1,6 @@
+# @package method.hyperparameters
+
+model: null
+net_args:
+  input_size: null
+  num_classes: null

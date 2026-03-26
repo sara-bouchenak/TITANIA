@@ -1,0 +1,91 @@
+data:
+  cleaning:
+    label_errors:
+      correction_mode: binary_flip
+      detection_mode: cleanlab_split
+      name: local
+      seed: 20
+    missing_values:
+      correction_mode: mode
+      name: local
+    name: multi_error_types
+    outliers:
+      correction_mode: mode
+      detection_mode: std
+      name: local
+  dataset:
+    dataset_name: MEPS
+    path: ./datasets/MEPS/raw_data/h181.ssp
+    sensitive_attributes:
+    - gender
+    - race
+    train_size: 0.8
+  distribution:
+    name: iid
+  loading:
+    save_data_after_cleaning: false
+    save_data_before_cleaning: false
+    save_dir: ./datasets/MEPS/static_data_loading
+    static: false
+  noise_injection:
+    label_errors_percentage: 0.4
+    nan_percentage: 0.0
+  others:
+    client_split: 0.2
+    client_val_split: 0.5
+    keep_test: false
+    sampling_perc: 1.0
+    server_split: 0.0
+    server_test: false
+    server_test_union: true
+    server_val_split: 0.0
+    uniform_test: false
+  seed: 38
+eval:
+  eval_every: 1
+  locals: false
+  post_fit: false
+  pre_fit: false
+  server: true
+  task: classification
+exp:
+  device: cpu
+  inmemory: true
+  seed: 20
+  train: true
+logger:
+  json_log_dir: ${paths.output_dir}
+  name: src.FL_core.utils.log.CustomLog
+method:
+  hyperparameters:
+    client:
+      batch_size: 128
+      local_epochs: 10
+      loss: BCELoss
+      optimizer:
+        lr: 0.001
+        name: Adagrad
+        weight_decay: 0.01
+      scheduler:
+        gamma: 1
+        name: StepLR
+        step_size: 1
+    model: src.FL_core.utils.net.LogRegression
+    net_args:
+      input_size: 138
+      num_classes: 1
+    server:
+      loss: BCELoss
+      time_to_accuracy_target: 0.8
+      weighted: true
+  name: src.FL_core.FL_algorithms.CustomCentralizedFL
+paths:
+  data_dir: ./datasets
+  log_dir: ./logs
+  output_dir: ${hydra:runtime.output_dir}
+  root_dir: .
+protocol:
+  eligible_perc: 1.0
+  n_clients: 10
+  n_rounds: 150
+save: {}

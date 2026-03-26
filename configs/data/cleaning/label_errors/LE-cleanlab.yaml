@@ -1,0 +1,4 @@
+name: local
+detection_mode: cleanlab_split
+correction_mode: binary_flip
+seed: ${exp.seed}

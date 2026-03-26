@@ -1,0 +1,6 @@
+run:
+  dir: ${paths.root_dir}/outputs/FL_non_iid_settings/${data.dataset.dataset_name}/${now:%Y-%m-%d}_${now:%H-%M-%S}
+
+sweep:
+  dir: ${paths.root_dir}/outputs/FL_non_iid_settings/${data.dataset.dataset_name}/${now:%Y-%m-%d}_${now:%H-%M-%S}
+  subdir: data_distribution_name=${data.distribution.name},dirichlet_alpha=${data.distribution.alpha}/data_cleaning=${data.cleaning.name}/exp_seed=${exp.seed},data_seed=${data.seed}

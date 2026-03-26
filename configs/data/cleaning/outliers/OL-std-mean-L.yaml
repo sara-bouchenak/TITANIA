@@ -1,0 +1,3 @@
+name: local
+detection_mode: std
+correction_mode: mean

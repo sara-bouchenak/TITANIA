@@ -1,0 +1,9 @@
+# @package _global_
+defaults:
+  - /experiment/overall_impact/MEPS/SVM/meps.yaml
+
+hydra:
+  sweeper:
+    params:
+      data/cleaning:  LE-cleanlab,LE-FedCorr,LE-cleanlab-remove,LE-FedCorr-remove
+      exp.seed: 101,202,303,404,505

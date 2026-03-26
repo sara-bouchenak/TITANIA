@@ -1,0 +1,6 @@
+run:
+  dir: ${paths.root_dir}/outputs/error_rates/${data.dataset.dataset_name}/${now:%Y-%m-%d}_${now:%H-%M-%S}
+
+sweep:
+  dir: ${paths.root_dir}/outputs/error_rates/${data.dataset.dataset_name}/${now:%Y-%m-%d}_${now:%H-%M-%S}
+  subdir: injected_label_errors_perc=${data.noise_injection.label_errors_percentage},data_cleaning=${data.cleaning.name}/exp_seed=${exp.seed},data_seed=${data.seed}

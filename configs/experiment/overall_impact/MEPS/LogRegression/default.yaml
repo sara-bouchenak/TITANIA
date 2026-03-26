@@ -1,0 +1,9 @@
+# @package _global_
+defaults:
+  - /experiment/overall_impact/MEPS/LogRegression/meps.yaml
+
+hydra:
+  sweeper:
+    params:
+      data/cleaning: default
+      exp.seed: 101,202,303,404,505

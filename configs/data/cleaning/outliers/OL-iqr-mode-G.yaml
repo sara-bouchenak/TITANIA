@@ -1,0 +1,3 @@
+name: global
+detection_mode: iqr
+correction_mode: mode

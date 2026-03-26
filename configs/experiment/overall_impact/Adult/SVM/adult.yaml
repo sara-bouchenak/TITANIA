@@ -1,0 +1,18 @@
+# @package _global_
+defaults:
+  - /experiment/overall_impact/Adult/adult.yaml
+
+method:
+
+  hyperparameters:
+
+    model: src.FL_core.utils.net.SVM
+
+    client:
+
+      loss: torchmetrics.classification.BinaryHingeLoss
+
+      optimizer:
+        name: Adam
+        lr: 0.001
+        weight_decay: 0.0

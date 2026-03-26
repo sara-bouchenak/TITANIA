@@ -1,0 +1,99 @@
+{
+    "outliers": {
+        "clients_train": {
+            "perc_outliers": 0.22010374726431328,
+            "perc_outliers_age_group_A": 0.3242165359605099,
+            "perc_outliers_age_group_B": 0.14915268521184624,
+            "perc_outliers_gender_group_A": 0.2486838435255561,
+            "perc_outliers_gender_group_B": 0.19380914194065757,
+            "perc_outliers_race_group_A": 0.22822489078767585,
+            "perc_outliers_race_group_B": 0.16664555358500127
+        },
+        "clients_test": {
+            "perc_outliers": 0.21821644558789136,
+            "perc_outliers_age_group_A": 0.31914545305721537,
+            "perc_outliers_age_group_B": 0.14859981933152666,
+            "perc_outliers_gender_group_A": 0.24574022346368715,
+            "perc_outliers_gender_group_B": 0.1929655967710936,
+            "perc_outliers_race_group_A": 0.22571692876965774,
+            "perc_outliers_race_group_B": 0.16938519447929737
+        },
+        "clients_val": {
+            "perc_outliers": 0.22116412723870624,
+            "perc_outliers_age_group_A": 0.3216743119266055,
+            "perc_outliers_age_group_B": 0.15191873589164787,
+            "perc_outliers_gender_group_A": 0.24892822569492462,
+            "perc_outliers_gender_group_B": 0.19520237941290572,
+            "perc_outliers_race_group_A": 0.22969533359043579,
+            "perc_outliers_race_group_B": 0.16583291645822912
+        },
+        "server_test": {
+            "perc_outliers": 0.218082795950416,
+            "perc_outliers_age_group_A": 0.31898174674633706,
+            "perc_outliers_age_group_B": 0.14848690153568203,
+            "perc_outliers_gender_group_A": 0.24539106145251396,
+            "perc_outliers_gender_group_B": 0.19302966237427124,
+            "perc_outliers_race_group_A": 0.22560129509713228,
+            "perc_outliers_race_group_B": 0.16913425345043914
+        },
+        "server_val": {
+            "perc_outliers": 0.22109730018711574,
+            "perc_outliers_age_group_A": 0.3220019659239843,
+            "perc_outliers_age_group_B": 0.1515801354401806,
+            "perc_outliers_gender_group_A": 0.24927395934172314,
+            "perc_outliers_gender_group_B": 0.1947497736971421,
+            "perc_outliers_race_group_A": 0.22984959506363287,
+            "perc_outliers_race_group_B": 0.16433216608304152
+        },
+        "cleaning_time": 0.6836023330688477
+    },
+    "missing_values": {
+        "clients_train": {
+            "perc_missing_values": 0.5194854575347161,
+            "perc_missing_values_age_group_A": 0.5206935464194218,
+            "perc_missing_values_age_group_B": 0.5188315600934356,
+            "perc_missing_values_gender_group_A": 0.5194844368133462,
+            "perc_missing_values_gender_group_B": 0.5194863327099829,
+            "perc_missing_values_race_group_A": 0.5162360128416918,
+            "perc_missing_values_race_group_B": 0.5392946720376985
+        },
+        "clients_test": {
+            "perc_missing_values": 0.5206000512864347,
+            "perc_missing_values_age_group_A": 0.5271699927867276,
+            "perc_missing_values_age_group_B": 0.5169761273209549,
+            "perc_missing_values_gender_group_A": 0.5267104897694658,
+            "perc_missing_values_gender_group_B": 0.5153608001905216,
+            "perc_missing_values_race_group_A": 0.5178215850258862,
+            "perc_missing_values_race_group_B": 0.5374622356495469
+        },
+        "clients_val": {
+            "perc_missing_values": 0.5233600755073148,
+            "perc_missing_values_age_group_A": 0.5250573602221954,
+            "perc_missing_values_age_group_B": 0.5224248070268831,
+            "perc_missing_values_gender_group_A": 0.5206223531577978,
+            "perc_missing_values_gender_group_B": 0.5257491765083956,
+            "perc_missing_values_race_group_A": 0.521277660959247,
+            "perc_missing_values_race_group_B": 0.535832083958021
+        },
+        "server_test": {
+            "perc_missing_values": 0.5205965302110931,
+            "perc_missing_values_age_group_A": 0.5272836538461538,
+            "perc_missing_values_age_group_B": 0.516907571940061,
+            "perc_missing_values_gender_group_A": 0.5264667777160836,
+            "perc_missing_values_gender_group_B": 0.5155604953953636,
+            "perc_missing_values_race_group_A": 0.5177442636006172,
+            "perc_missing_values_race_group_B": 0.5379039565086077
+        },
+        "server_val": {
+            "perc_missing_values": 0.5236154605122045,
+            "perc_missing_values_age_group_A": 0.5254319197776972,
+            "perc_missing_values_age_group_B": 0.5226154050818146,
+            "perc_missing_values_gender_group_A": 0.521138436032053,
+            "perc_missing_values_gender_group_B": 0.5257748514533483,
+            "perc_missing_values_race_group_A": 0.5214321482223335,
+            "perc_missing_values_race_group_B": 0.5366656689613888
+        },
+        "cleaning_time": 1.3386056423187256
+    },
+    "total_cleaning_time": 2.0351240634918213
+}

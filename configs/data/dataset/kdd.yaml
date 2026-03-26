@@ -1,0 +1,3 @@
+dataset_name: KDD
+path: ${paths.data_dir}/${data.dataset.dataset_name}/raw_data
+sensitive_attributes: ['age', 'gender', 'race']

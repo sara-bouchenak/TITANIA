@@ -1,0 +1,6 @@
+task: classification
+eval_every: 1
+pre_fit: true
+post_fit: true
+locals: true
+server: true

@@ -1,0 +1,21 @@
+# @package _global_
+defaults:
+  - /experiment/overall_impact/KDD_001/MLP/kdd.yaml
+
+  - override /data/distribution: dirichlet_label.yaml
+  - override /data/others: union_clients_test.yaml
+  - override /hydra: overall_impact2
+
+
+data:
+
+  seed: 30
+
+  distribution:
+    alpha: 0.01
+
+hydra:
+  sweeper:
+    params:
+      data/cleaning:  LE-cleanlab,LE-FedCorr,LE-cleanlab-remove,LE-FedCorr-remove
+      exp.seed: 101,202,303,404,505

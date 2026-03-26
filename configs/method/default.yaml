@@ -1,0 +1,4 @@
+defaults:
+  - hyperparameters: log_regression.yaml
+
+name: src.FL_core.FL_algorithms.CustomCentralizedFL

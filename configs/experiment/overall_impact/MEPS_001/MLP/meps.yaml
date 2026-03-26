@@ -1,0 +1,22 @@
+# @package _global_
+defaults:
+  - /experiment/overall_impact/MEPS_001/meps.yaml
+
+method:
+
+  hyperparameters:
+
+    model: src.FL_core.utils.net.MLP
+
+    net_args:
+      n_hidden_layer_1: 64
+      n_hidden_layer_2: 32
+
+    client:
+
+      loss: BCEWithLogitsLoss
+
+      optimizer:
+        name: Adagrad
+        lr: 0.001
+        weight_decay: 0.01

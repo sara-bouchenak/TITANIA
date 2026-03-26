@@ -1,0 +1,2 @@
+name: src.FL_core.utils.log.CustomLog
+json_log_dir: ${paths.output_dir}

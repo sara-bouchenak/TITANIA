@@ -1,0 +1,9 @@
+defaults:
+  - client: default.yaml
+  - model: default.yaml
+  - server: default.yaml
+
+model: src.FL_core.utils.net.SVM
+
+client:
+  loss: torchmetrics.classification.BinaryHingeLoss

@@ -1,0 +1,18 @@
+# @package _global_
+defaults:
+  - /experiment/overall_impact/MEPS_001/meps.yaml
+
+method:
+
+  hyperparameters:
+
+    model: src.FL_core.utils.net.LogRegression
+
+    client:
+
+      loss: BCELoss
+
+      optimizer:
+        name: Adagrad
+        lr: 0.001
+        weight_decay: 0.01

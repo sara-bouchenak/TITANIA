@@ -1,0 +1,4 @@
+dataset_name: Heart
+path: ${paths.data_dir}/${data.dataset.dataset_name}/raw_data/cardio_train.csv
+sensitive_attributes: ['gender', 'age']
+train_size: 0.8

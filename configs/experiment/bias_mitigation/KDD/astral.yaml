@@ -1,0 +1,13 @@
+# @package _global_
+defaults:
+  - /experiment/bias_mitigation/KDD/kdd.yaml
+  - override /method/hyperparameters/server: ASTRAL.yaml
+
+method:
+  name: src.FL_core.FL_algorithms.ASTRAL.ASTRAL
+
+hydra:
+  sweeper:
+    params:
+      data/cleaning: default, multi_error_types,multi_error_types_flip_order
+      exp.seed: 101, 202, 303, 404, 505

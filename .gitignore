@@ -1,0 +1,10 @@
+__pycache__/
+/out/
+/tmp
+/.git/
+/outputs
+/multirun
+/scripts
+/datasets
+/plots
+*.csv

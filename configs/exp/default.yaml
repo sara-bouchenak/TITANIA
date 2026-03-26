@@ -1,0 +1,4 @@
+device: cpu
+seed: 42
+inmemory: true
+train: true

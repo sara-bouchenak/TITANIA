@@ -1,0 +1,13 @@
+defaults:
+  - client: default.yaml
+  - model: default.yaml
+  - server: default.yaml
+
+model: src.FL_core.utils.net.MLP
+
+net_args:
+  n_hidden_layer_1: 64
+  n_hidden_layer_2: 32
+
+client:
+  loss: BCEWithLogitsLoss

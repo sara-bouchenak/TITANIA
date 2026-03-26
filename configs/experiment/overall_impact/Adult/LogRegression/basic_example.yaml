@@ -1,0 +1,9 @@
+# @package _global_
+defaults:
+  - /experiment/overall_impact/Adult/LogRegression/adult.yaml
+
+hydra:
+  sweeper:
+    params:
+      data/cleaning: OL-std-mean-G
+      exp.seed: 101
