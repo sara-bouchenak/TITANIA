@@ -6,3 +6,5 @@ __pycache__/
 /multirun
 /scripts
 /plots
+/datasets
+/plots

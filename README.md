@@ -1,5 +1,7 @@
 # TITANIA
 
+This is the codebase for the DSN 2026 paper "Automated Data Error Cleaning Impact on Federated Learning Utility and Fairness".
+
 **TITANIA** is an extensible framework for the evaluation of the impact of data cleaning methods on FL model utility and fairness.
 It includes several datasets and models, data cleaning methods, and evaluation metrics. 
 As a result, it produces various FL workload traces and their statistical analysis.
@@ -15,7 +17,7 @@ In the following, we introduce:
 - [Starting with TITANIA](#starting-with-titania)  
 - [Running Experiments](#running-experiments)  
 - [Producing Traces and Statistics](#producing-traces-and-statistics)
-- [Reproductibility testing](#reproductibility-testing)  
+- [Reproducibility testing](#reproducibility-testing)  
 - [Acknowledgments](#acknowledgments)  
 - [Publications](#publications) 
 
@@ -78,8 +80,8 @@ Then, unzip the `datasets` folder to the root of the project.
 
 ## Running Experiments
 
-TITANIA is based on [Hydra](https://hydra.cc/) for simplifying the launch of experiments and ensuring high reproductibily with config files.
-In the following, we provide examples that illustrate how to efficiently run experiments with our framework, via simple command-line (A) or through experiment config files (B).
+TITANIA is based on [Hydra](https://hydra.cc/) for simplifying the launch of experiments and ensuring high reproducibility with config files.
+In the following, we provide examples that illustrate how to efficiently run experiments with our framework, via simple command-line (A) or through experiment config files (B). The reproducibility testing for our paper is however in a later section.
 Please look at [Hydra documentation](https://hydra.cc/docs/intro/) for further comprehension about Hydra basics.
 
 ### A- Run experiment(s) from command-line
@@ -90,14 +92,14 @@ Run `./main.py` to launch a single experiment with the default configuration val
   python main.py
   ```
 
-Config values (e.g., `exp.seed`) or config groups (e.g., `data/dataset`) can be directly overrided from the command line. Note that `+` need to be added before the config values or groups that do not have default values.
+Config values (e.g., `exp.seed`) or config groups (e.g., `data/dataset`) can be directly overridden from the command line. Note that `+` need to be added before the config values or groups that do not have default values.
 
   ```bash
   python main.py exp.seed=1 data/dataset=ars +data/cleaning/outliers=default
   ```
 
 Multiple experiments can also be run sequentially by first adding the option `-m` to the command line and then providing multiple values (separated by a comma) for the config values or the config groups.
-In this case, all combinations of values to be sweeped will be crossed to launch a batch of experiments.
+In this case, all combinations of values to be swept will be crossed to launch a batch of experiments.
 
   ```bash
   python main.py -m exp.seed=1,2,3,4,5 data/dataset=ars,heart
@@ -105,7 +107,7 @@ In this case, all combinations of values to be sweeped will be crossed to launch
 
 ### B- Run experiment(s) from a YAML experiment config file
 
-1. Create a YAML configuration file in `./configs/experiment/` by overriding `./configs/experiment/template.yaml`. Config files saved during past experiments (`EXP_PATH/config.yaml`) can notably be copied and pasted to `./configs/experiment/` to reproduce the experiments. In that case, add ``` # @package _global_ ``` at the beggining of the files just as following:
+1. Create a YAML configuration file in `./configs/experiment/` by overriding `./configs/experiment/template.yaml`. Config files saved during past experiments (`EXP_PATH/config.yaml`) can notably be copied and pasted to `./configs/experiment/` to reproduce the experiments. In that case, add ``` # @package _global_ ``` at the beginning of the files just as following:
 
   ```yaml
   # @package _global_
@@ -240,7 +242,11 @@ Sweeping capabilities can also be directly added to the experiment config file. 
       params:
         exp.seed: 1,2,3,4,5
   ```
-
+  Runs with:
+  
+  ```bash
+  python main.py -m +experiment=template
+  ```
 Finally, running experiment config file can be also combined with the command line way of specifying config values.
 
   ```bash
@@ -257,11 +263,11 @@ TITANIA supports detailed trace logging to evaluate the impact of data cleaning 
 
 There are 4 main experiment folders that corresponds to the experimental evaluation subsections of TITANIA paper (+1 extra folder referred to `overall_impact_non_iid` for additional experiments):
 
-- `./traces/overall_impact` measures each data cleaning method for relevant datasets and models over 5 runs in a IID setting;
+- `./traces/overall_impact` measures each data cleaning method for relevant datasets and models over 5 runs in an IID setting;
 
 - `./traces/bias_mitigation` focuses on the impact of bias mitigation with ASTRAL using and not using cleaning;
 
-- `./traces/FL_non_iid_settings` studies the impact of varied alpha parameter for the dirichlet ditribution;
+- `./traces/FL_non_iid_settings` studies the impact of varied alpha parameter for the dirichlet distribution;
 
 - `./traces/bias_mitigation` injects label errors and measures data cleaning impacts;
 
@@ -284,12 +290,12 @@ Depending on the experimental scenario, there are six types of metrics categorie
 
 ---
 
-## Reproductibility testing
+## Reproducibility testing
 
 
-In this section, you can test the reproductibility of our experiments.
-We first provide a basic run to test the functionning of the TITANIA framework, then propose to reproduce part of a graph of the paper, and we finally explain how you could reproduce all results. 
-Note that all experiments are run on machines equipped with two Intel Xeon Gold 6130 CPUs (16 cores each) and 192 GB of RAM. Please do not use GPU for reproductibility testing.
+In this section, you can test the reproducibility of our experiments.
+We first provide a basic run to test the functioning of the TITANIA framework, then propose to reproduce part of a graph of the paper, and we finally explain how you could reproduce all results. 
+Note that all experiments are run on machines equipped with two Intel Xeon Gold 6130 CPUs (16 cores each) and 192 GB of RAM. Please do not use GPU for reproducibility testing.
 
 ### 1. Basic run (2 minutes human time, 7 minutes CPU time)
 
@@ -376,7 +382,7 @@ Finally, run the following command to compute all result tables (i.e., Tables 3 
 python ./src/TITANIA/result_statistics/print_tables.py --exp_name YOUR_EXP_NAME
 ```
 
-with `YOUR_EXP_NAME`, the name of your experiment folder in the `traces` folder.
+With `YOUR_EXP_NAME`, the name of your experiment folder in the `traces` folder.
 
 As you don't have the time to run all experiments, you can produce the tables from the experiment folder `traces/overall_impact`.
 
@@ -402,7 +408,7 @@ The plots folder includes all the combinations we could use. The relevant ones i
 
 ## Contributing
 
-TITANIA is designed to be modular an flexible so adding features is meant to practical and simple.
+TITANIA is designed to be modular and flexible so adding features is meant to practical and simple.
 
 ### How to Extend TITANIA
 
