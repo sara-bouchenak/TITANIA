@@ -10,7 +10,7 @@ As a result, it produces various FL workload traces and their statistical analys
   <img src="./overview_titania.png" alt="Overview of TITANIA experimentation framework">
 </p>
 
-In the following, we introduce:
+The following text is split into sections:
 
 - [TITANIA Features](#titania-features)  
 - [Repository Structure](#repository-structure)  
@@ -55,7 +55,7 @@ In the following, we introduce:
 ```
 ---
 
-## Starting with TITANIA
+## Starting with TITANIA (human time 2 minutes, CPU time 10 minutes)
 
 ### Software Requirements
 - Python 3.13.5
@@ -69,19 +69,21 @@ Experiments can be run on CPU or GPU, but CPU is sufficient for the tabular data
 To install the latest TITANIA version from source:
 
 ```bash
-git clone https://anonymous.4open.science/r/titania-4A2C/
+git clone https://github.com/sara-bouchenak/TITANIA.git
 cd TITANIA
 pip install -r requirements.txt
 ```
-
 ---
-
-Then, unzip the `datasets` folder to the root of the project.
+Or, after downloading the zip from figshare, unzip it and run
+```bash
+cd TITANIA-main
+pip install -r requirements.txt
+```
 
 ## Running Experiments
 
 TITANIA is based on [Hydra](https://hydra.cc/) for simplifying the launch of experiments and ensuring high reproducibility with config files.
-In the following, we provide examples that illustrate how to efficiently run experiments with our framework, via simple command-line (A) or through experiment config files (B). The reproducibility testing for our paper is however in a later section.
+The following section provides examples that illustrate how to efficiently run experiments with the framework, via simple command-line (A) or through experiment config files (B). The reproducibility testing for the paper is however in a later section.
 Please look at [Hydra documentation](https://hydra.cc/docs/intro/) for further comprehension about Hydra basics.
 
 ### A- Run experiment(s) from command-line
@@ -293,13 +295,13 @@ Depending on the experimental scenario, there are six types of metrics categorie
 ## Reproducibility testing
 
 
-In this section, you can test the reproducibility of our experiments.
-We first provide a basic run to test the functioning of the TITANIA framework, then propose to reproduce part of a graph of the paper, and we finally explain how you could reproduce all results. 
+The purpose of this section is to allow testing the reproducibility of results.
+The first step is a basic run to test the functioning of the TITANIA framework, followed by reproducing part of a graph of the paper, and finally explaining how to reproduce all results from traces. 
 Note that all experiments are run on machines equipped with two Intel Xeon Gold 6130 CPUs (16 cores each) and 192 GB of RAM. Please do not use GPU for reproducibility testing.
 
-### 1. Basic run (2 minutes human time, 7 minutes CPU time)
+### 1. Run a simple examples (2 minutes human time, 7 minutes CPU time)
 
-To test the general functioning of the code, we start with a basic example: the OL-std-mean-G cleaning method applied on the Adult Dataset, an IID setting, with a logistic regression model.
+This section presents a basic example, to test the general functioning of the code: the OL-std-mean-G cleaning method applied on the Adult Dataset, an IID setting, with a logistic regression model.
 
 Run this short command for training the model:
 
@@ -309,20 +311,21 @@ Run this short command for training the model:
 
 After the script is completed, the output files are saved in the subfolder of `outputs/Adult/EXP_TIMESTAMP` (with `EXP_TIMESTAMP` the timestamp of the experiment).
 It should contain a file `results.json` with the same values as the result experiment in `traces/overall_impact/dataset=Adult/model=LogRegression/data_cleaning=OL-std-mean-G/exp_seed=101,data_seed=59/results.json`.
-You can find an explanation of the metrics in [this section](#producing-traces-and-statistics).
+Metrics are explained in [this section](#producing-traces-and-statistics).
 
-You can use the script `traces/compare_results_json.py` to compare the global performance of the two JSON files:
+This script `traces/compare_results_json.py` helps compare the global performance of the two JSON files:
 
 ```bash
-  python traces/compare_results_json.py --path_to_json_1 PATH_TO_YOUR_JSON --path_to_json_2 traces/overall_impact/dataset=Adult/model=LogRegression/data_cleaning=OL-std-mean-G/exp_seed=101,data_seed=59/results.json
+  python traces/compare_results_json.py --path_to_json_1 PATH_TO_THE_JSON --path_to_json_2 traces/overall_impact/dataset=Adult/model=LogRegression/data_cleaning=OL-std-mean-G/exp_seed=101,data_seed=59/results.json
 ```
 
-### 2. Partial results of Figure 4 (5 minutes human time, 1h30 CPU time)
+### 2. Run a complete experiment (5 minutes human time, 1h30 CPU time)
 
-Then, we propose you to partially reproduce the Figure 4 of the paper.
+This section reproduces some results of the Figure 4 of the paper.
+
 It focuses on 8 experiments, which considers 2 combinations of cleaning methods (*w/o cleaning* being the baseline without cleaning, and *w/ cleaning+* being with cleaning by two Federated learning solutions, i.e., FedCorr for label errors and Cafe for missing values, as well as a mathematical outlier cleaning method, i.e., OL-std-mode-L) and 4 data distributions (*IID*, *non-IID 0.01*, *non-IID 0.05*, and *non-IID 0.1*).
 
-We have prepared two experiment config files to partially reproduce the varied dirichlet figure in our paper.
+Two experiment config files are provided to reproduce some results for the varied dirichlet figure of the paper.
 
 ```bash
 python main.py -m +experiment=FL_non_iid_settings/Adult/dirichlet_example
@@ -332,7 +335,7 @@ python main.py -m +experiment=FL_non_iid_settings/Adult/dirichlet_example
 python main.py -m +experiment=FL_non_iid_settings/Adult/iid_example
 ```
 
-This create subfolders with the outputs in `outputs/FL_non_iid_settings/Adult/EXP_TIMESTAMP` (with `EXP_TIMESTAMP` the timestamp of the experiment).
+This creates subfolders with the outputs in `outputs/FL_non_iid_settings/Adult/EXP_TIMESTAMP` (with `EXP_TIMESTAMP` the timestamp of the experiment).
 
 Create a folder example and within it dataset=Adult. Then drag and drop the relevant folders so that the structure is:
 
@@ -360,35 +363,24 @@ The `plot/example/Adult/non_iid_Accuracy_EOD_race.pdf` plot should be the same a
 
 ### 3. All results of the paper
 
-Finally, we explain how to create all traces and how to use them to reproduce all tables and figures of the paper.
-Note that you can also reproduce the tables and figures directly from the traces folder that we provide.
+This section explains how to create all traces and how to use them to reproduce all tables and figures of the paper.
+The figures and tables can also be reproduced from the traces folder provided.
 
-#### A- Run all experiments (60 minutes human time, 60 days CPU time)
+#### A- Produce all result tables of the paper (2 minutes human time, 2 minutes CPU time)
 
-Running the full experiments is a matter of following the file structure and running the relevant configuration YAML files (in the `configs/experiment` folder). One must first select a **section** (*overall_impact*, *FL_non_iid_settings*, *error_rates*, *bias_mitigation*). In each case there are five **datasets** (*Adult*, *ARS*, *Heart*, *KDD*, *MEPS*) and for *overall_impact* we add dirichlet cases (*Adult_001*, *ARS_001*, *Heart_001*, *KDD_001*, *MEPS_001*). For *overall_impact* there are 3 **models** per dataset (*SVM*, *MLP*, *LogRegression*).
-
-Finally, one must select the **file**. For *bias_mitigation*, there *astral* and *no_astral*. For *error_rates*, the file is just the dataset's name. For *FL_non_iid_settings*, it's *dirichlet_01*, *dirichlet_001*, *dirichlet_005*, *iid*. For *overall_impact*, it's *outliers*, *label_errors*, *default*, and finally *missing_values* (the last only for KDD and Adult).
+Finally, run the following command to compute all result tables (i.e., Tables 3 to 7) based on the traces:
 
 ```bash
-python main.py -m +experiment=SECTION_NAME/DATASET_NAME_OPTIONAL/MODELS_NAME_OPTIONAL/FILE_NAME
+python ./src/TITANIA/result_statistics/print_tables.py --exp_name EXP_NAME
 ```
 
+With `EXP_NAME`, the name of the selected experiment folder in the `traces` folder.
 
-#### B- Produce all result tables of the paper (2 minutes human time, 2 minutes CPU time)
+Running all experiments would be too slow, so traces folders is provided `traces/overall_impact`.
 
-Finally, run the following command to compute all result tables (i.e., Tables 3 to 7) based on your traces:
+#### B. Produce all result graphes of the paper (2 minutes human time, 25 minutes CPU time)
 
-```bash
-python ./src/TITANIA/result_statistics/print_tables.py --exp_name YOUR_EXP_NAME
-```
-
-With `YOUR_EXP_NAME`, the name of your experiment folder in the `traces` folder.
-
-As you don't have the time to run all experiments, you can produce the tables from the experiment folder `traces/overall_impact`.
-
-#### C. Produce all result graphes of the paper (2 minutes human time, 25 minutes CPU time)
-
-To create all the graphs from the paper using the traces previously produced, run these commands (if you only want the graphs in the paper replacing `Heart,ARS,KDD,MEPS,Adult` by `Adult` makes running the code faster).
+To create all the graphs from the paper using the traces previously produced, run these commands (to get just the graphs in the paper replace `Heart,ARS,KDD,MEPS,Adult` by `Adult` makes running the code faster).
 
 The first one creates CSVs based one the traces:
 
@@ -398,7 +390,7 @@ The second creates a plot structure:
 
 ```python ./src/TITANIA/result_statistics/graphs.py --dataset Heart,ARS,KDD,MEPS,Adult --experiment=FL_non_iid_settings,error_rates,bias_mitigation```
 
-The plots folder includes all the combinations we could use. The relevant ones in the paper are:
+The plots folder includes all the potential combinations. The relevant ones in the paper are:
 
 - plot/FL_non_iid_settings/Adult/non_iid_Accuracy_EOD_race.pdf
 - plot/bias_mitigation/Adult/bias_mitigation_accuracy.pdf
