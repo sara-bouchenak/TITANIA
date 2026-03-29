@@ -296,17 +296,17 @@ Depending on the experimental scenario, there are six types of metrics categorie
 
 
 The purpose of this section is to allow testing the reproducibility of results.
-The first step is a basic run to test the functioning of the TITANIA framework, followed by reproducing part of a graph of the paper, and finally explaining how to reproduce all results from traces. 
+The first step is a simple run to test the functioning of the TITANIA framework, followed by reproducing part of a graph of the paper, and finally explaining how to reproduce all results from traces. 
 Note that all experiments are run on machines equipped with two Intel Xeon Gold 6130 CPUs (16 cores each) and 192 GB of RAM. Please do not use GPU for reproducibility testing.
 
 ### 1. Run a simple examples (2 minutes human time, 7 minutes CPU time)
 
-This section presents a basic example, to test the general functioning of the code: the OL-std-mean-G cleaning method applied on the Adult Dataset, an IID setting, with a logistic regression model.
+This section presents a simple example, to test the general functioning of the code: the OL-std-mean-G cleaning method applied on the Adult Dataset, an IID setting, with a logistic regression model.
 
 Run this short command for training the model:
 
 ```bash
-  python main.py +experiment=overall_impact/Adult/LogRegression/basic_example
+  python main.py +experiment=overall_impact/Adult/LogRegression/simple_example
 ```
 
 After the script is completed, the output files are saved in the subfolder of `outputs/Adult/EXP_TIMESTAMP` (with `EXP_TIMESTAMP` the timestamp of the experiment).
