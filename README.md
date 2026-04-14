@@ -341,7 +341,7 @@ python main.py -m +experiment=FL_non_iid_settings/Adult/iid_example
 
 This creates subfolders with the outputs in `outputs/FL_non_iid_settings/Adult/EXP_TIMESTAMP` (with `EXP_TIMESTAMP` the timestamp of the experiment).
 
-Create a folder `example` and within it `dataset=Adult`. Then drag and drop the relevant folders so that the structure is:
+Create a folder `example` and within it `dataset=Adult`. Then drag and drop the relevant folders (or run the following script) so that the structure is:
 
 ```bash
 ├── traces
@@ -352,6 +352,10 @@ Create a folder `example` and within it `dataset=Adult`. Then drag and drop the 
 │   │   │   ├── data_distribution_name=label_dirichlet_skew,dirichlet_alpha=0.01/
 │   │   │   ├── data_distribution_name=label_dirichlet_skew,dirichlet_alpha=0.05/
 ```
+```bash
+python src/TITANIA/result_statistics/copy.py --date FOLDER_DATE
+```
+With `FOLDER_DATE` the date which should be your folder's name (for example 2026-04-14_11-44-41)
 
 Then run these two lines to create graphs, the first one creates a CSV in the `traces/example/dataset=Adult` folder, the second one creates graphs in the `plots/example/Adult` folder:
 
