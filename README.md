@@ -313,10 +313,10 @@ After the script is completed, the output files are saved in the subfolder of `o
 It should contain a file `results.json` with the same values as the result experiment in `traces/overall_impact/dataset=Adult/model=LogRegression/data_cleaning=OL-std-mean-G/exp_seed=101,data_seed=59/results.json`.
 Metrics are explained in [this section](#producing-traces-and-statistics).
 
-This script `traces/compare_results_json.py` helps compare the global performance of the two JSON files:
+This script `src/TITANIA/result_statistics/compare_results_json.py` helps compare the global performance of the two JSON files:
 
 ```bash
-  python traces/compare_results_json.py --path_to_json_1 PATH_TO_THE_JSON --path_to_json_2 traces/overall_impact/dataset=Adult/model=LogRegression/data_cleaning=OL-std-mean-G/exp_seed=101,data_seed=59/results.json
+  python src/TITANIA/result_statistics/compare_results_json.py --path_to_json_1 PATH_TO_THE_JSON --path_to_json_2 traces/overall_impact/dataset=Adult/model=LogRegression/data_cleaning=OL-std-mean-G/exp_seed=101,data_seed=59/results.json
 ```
 
 ### 2. Run a complete experiment (5 minutes human time, 1h30 CPU time)
@@ -349,17 +349,17 @@ Create a folder example and within it dataset=Adult. Then drag and drop the rele
 │   │   │   ├── data_distribution_name=label_dirichlet_skew,dirichlet_alpha=0.05/
 ```
 
-Then run these two lines to create graphs, the first one creates a CSV in the `traces/example/dataset=Adult` folder, the second one creates graphs in the `plot/example/Adult` folder:
+Then run these two lines to create graphs, the first one creates a CSV in the `src/TITANIA/result_statistics/example/dataset=Adult` folder, the second one creates graphs in the `plots/example/Adult` folder:
 
 ```bash
-python ./traces/create_dataset.py --dataset Adult --experiment=example
+python ./src/TITANIA/result_statistics/create_dataset.py --dataset Adult --experiment=example
 ```
 
 ```bash
-python ./traces/graphs.py --dataset Adult --experiment=example
+python ./src/TITANIA/result_statistics/graphs.py --dataset Adult --experiment=example
 ```
 
-The `plot/example/Adult/non_iid_Accuracy_EOD_race.pdf` plot should be the same as the plot in the paper (with only squares and circles) with some differences in dimensions.
+The `plots/example/Adult/non_iid_Accuracy_EOD_race.pdf` plot should be the same as the plot in the paper (with only squares and circles) with some differences in dimensions.
 
 ### 3. All results of the paper
 
@@ -376,7 +376,7 @@ python ./src/TITANIA/result_statistics/print_tables.py --exp_name EXP_NAME
 
 With `EXP_NAME`, the name of the selected experiment folder in the `traces` folder.
 
-Running all experiments would be too slow, so traces folders is provided `traces/overall_impact`.
+Running all experiments would be too slow, so traces folders is provided `src/TITANIA/result_statistics/overall_impact`.
 
 #### B. Produce all result graphes of the paper (2 minutes human time, 25 minutes CPU time)
 
@@ -392,11 +392,11 @@ The second creates a plot structure:
 
 The plots folder includes all the potential combinations. The relevant ones in the paper are:
 
-- plot/FL_non_iid_settings/Adult/non_iid_Accuracy_EOD_race.pdf
-- plot/bias_mitigation/Adult/bias_mitigation_accuracy.pdf
-- plot/bias_mitigation/Adult/bias_mitigation_SPD_race.pdf
-- plot/error_rate/Adult/error_rate_precision.pdf
-- plot/error_rate/Adult/error_rate_AOD_race.pdf
+- plots/FL_non_iid_settings/Adult/non_iid_Accuracy_EOD_race.pdf
+- plots/bias_mitigation/Adult/bias_mitigation_accuracy.pdf
+- plots/bias_mitigation/Adult/bias_mitigation_SPD_race.pdf
+- plots/error_rate/Adult/error_rate_precision.pdf
+- plots/error_rate/Adult/error_rate_AOD_race.pdf
 
 ## Contributing
 
