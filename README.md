@@ -397,9 +397,9 @@ The second creates a plot structure:
 The plots folder includes all the potential combinations. The relevant ones in the paper are:
 
 - plots/FL_non_iid_settings/Adult/non_iid_Accuracy_EOD_race.pdf
-- plots/bias_mitigation/Adult/bias_mitigation_accuracy.pdf
+- plots/bias_mitigation/Adult/bias_mitigation_Accuracy.pdf
 - plots/bias_mitigation/Adult/bias_mitigation_SPD_race.pdf
-- plots/error_rates/Adult/error_rate_precision.pdf
+- plots/error_rates/Adult/error_rate_Precision.pdf
 - plots/error_rates/Adult/error_rate_AOD_race.pdf
 
 ## Contributing
