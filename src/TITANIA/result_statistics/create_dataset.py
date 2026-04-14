@@ -129,9 +129,7 @@ def rename_data_cleaning_methods(df_column):
         "global_stat_outliers_iqr_nan": "OL-iqr-nan-G",
     }
 
-    return df_column.apply(lambda x: data_cleaning_mapping[x])
-
-
+    return df_column.apply(lambda x: data_cleaning_mapping[x] if x in data_cleaning_mapping.keys() else x)
 
 def load_df_multirun(exp_dir, metrics_type):
     json_metrics_paths = []
