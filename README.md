@@ -275,7 +275,7 @@ There are 4 main experiment folders that corresponds to the experimental evaluat
 
 - `./traces/FL_non_iid_settings` studies the impact of varied alpha parameter for the dirichlet distribution;
 
-- `./traces/bias_mitigation` injects label errors and measures data cleaning impacts;
+- `./traces/error_rates` injects label errors and measures data cleaning impacts;
 
 - `./traces/overall_impact_non_iid` measures each data cleaning method for relevant datasets and models over 5 runs in a non-IID setting.
 
@@ -313,7 +313,7 @@ Run this short command for training the model:
   python main.py -m +experiment=overall_impact/Adult/LogRegression/simple_example
 ```
 
-After the script is completed, the output files are saved in the subfolder of `outputs/Adult/EXP_TIMESTAMP` (with `EXP_TIMESTAMP` the timestamp of the experiment).
+After the script is completed, the output files are saved in the subfolder of `outputs/overall_impact/Adult/EXP_TIMESTAMP/model=LogRegression/data_cleaning=OL-std-mean-G/exp_seed=101,data_seed=5` (with `EXP_TIMESTAMP` the timestamp of the experiment).
 It should contain a file `results.json` with the same values as the result experiment in `traces/overall_impact/dataset=Adult/model=LogRegression/data_cleaning=OL-std-mean-G/exp_seed=101,data_seed=59/results.json`.
 Metrics are explained in [this section](#producing-traces-and-statistics).
 
@@ -341,7 +341,7 @@ python main.py -m +experiment=FL_non_iid_settings/Adult/iid_example
 
 This creates subfolders with the outputs in `outputs/FL_non_iid_settings/Adult/EXP_TIMESTAMP` (with `EXP_TIMESTAMP` the timestamp of the experiment).
 
-Create a folder example and within it dataset=Adult. Then drag and drop the relevant folders so that the structure is:
+Create a folder `example` and within it `dataset=Adult`. Then drag and drop the relevant folders so that the structure is:
 
 ```bash
 ├── traces
@@ -388,19 +388,21 @@ To create all the graphs from the paper using the traces previously produced, ru
 
 The first one creates CSVs based one the traces:
 
-```python ./src/TITANIA/result_statistics/create_dataset.py --dataset Heart,ARS,KDD,MEPS,Adult --experiment=FL_non_iid_settings,error_rates,bias_mitigation```
+```bash
+python ./src/TITANIA/result_statistics/create_dataset.py --dataset Heart,ARS,KDD,MEPS,Adult --experiment=FL_non_iid_settings,error_rates,bias_mitigation```
 
 The second creates a plot structure:
 
-```python ./src/TITANIA/result_statistics/graphs.py --dataset Heart,ARS,KDD,MEPS,Adult --experiment=FL_non_iid_settings,error_rates,bias_mitigation```
+```bash
+python ./src/TITANIA/result_statistics/graphs.py --dataset Heart,ARS,KDD,MEPS,Adult --experiment=FL_non_iid_settings,error_rates,bias_mitigation```
 
 The plots folder includes all the potential combinations. The relevant ones in the paper are:
 
-- plots/FL_non_iid_settings/Adult/non_iid_Accuracy_EOD_race.pdf
-- plots/bias_mitigation/Adult/bias_mitigation_Accuracy.pdf
-- plots/bias_mitigation/Adult/bias_mitigation_SPD_race.pdf
-- plots/error_rates/Adult/error_rate_Precision.pdf
-- plots/error_rates/Adult/error_rate_AOD_race.pdf
+- `plots/FL_non_iid_settings/Adult/non_iid_Accuracy_EOD_race.pdf`
+- `plots/bias_mitigation/Adult/bias_mitigation_Accuracy.pdf`
+- `plots/bias_mitigation/Adult/bias_mitigation_SPD_race.pdf`
+- `plots/error_rates/Adult/error_rate_Precision.pdf`
+- `plots/error_rates/Adult/error_rate_AOD_race.pdf`
 
 ## Contributing
 
