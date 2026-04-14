@@ -71,12 +71,16 @@ To install the latest TITANIA version from source:
 ```bash
 git clone https://github.com/sara-bouchenak/TITANIA.git
 cd TITANIA
+conda create -n TITANIA python=3.13.5
+conda activate TITANIA
 pip install -r requirements.txt
 ```
 ---
 Or, after downloading the zip from figshare, unzip it and run
 ```bash
 cd TITANIA-main
+conda create -n TITANIA python=3.13.5
+conda activate TITANIA
 pip install -r requirements.txt
 ```
 
@@ -306,7 +310,7 @@ This section presents a simple example, to test the general functioning of the c
 Run this short command for training the model:
 
 ```bash
-  python main.py +experiment=overall_impact/Adult/LogRegression/simple_example
+  python main.py -m +experiment=overall_impact/Adult/LogRegression/simple_example
 ```
 
 After the script is completed, the output files are saved in the subfolder of `outputs/Adult/EXP_TIMESTAMP` (with `EXP_TIMESTAMP` the timestamp of the experiment).
@@ -376,7 +380,7 @@ python ./src/TITANIA/result_statistics/print_tables.py --exp_name EXP_NAME
 
 With `EXP_NAME`, the name of the selected experiment folder in the `traces` folder.
 
-Running all experiments would be too slow, so traces folders is provided `src/TITANIA/result_statistics/overall_impact`.
+Running all experiments would be too slow, so traces folders is provided `traces/overall_impact`.
 
 #### B. Produce all result graphes of the paper (2 minutes human time, 25 minutes CPU time)
 
@@ -395,8 +399,8 @@ The plots folder includes all the potential combinations. The relevant ones in t
 - plots/FL_non_iid_settings/Adult/non_iid_Accuracy_EOD_race.pdf
 - plots/bias_mitigation/Adult/bias_mitigation_accuracy.pdf
 - plots/bias_mitigation/Adult/bias_mitigation_SPD_race.pdf
-- plots/error_rate/Adult/error_rate_precision.pdf
-- plots/error_rate/Adult/error_rate_AOD_race.pdf
+- plots/error_rates/Adult/error_rate_precision.pdf
+- plots/error_rates/Adult/error_rate_AOD_race.pdf
 
 ## Contributing
 
