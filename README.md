@@ -353,7 +353,7 @@ Create a folder example and within it dataset=Adult. Then drag and drop the rele
 │   │   │   ├── data_distribution_name=label_dirichlet_skew,dirichlet_alpha=0.05/
 ```
 
-Then run these two lines to create graphs, the first one creates a CSV in the `src/TITANIA/result_statistics/example/dataset=Adult` folder, the second one creates graphs in the `plots/example/Adult` folder:
+Then run these two lines to create graphs, the first one creates a CSV in the `traces/example/dataset=Adult` folder, the second one creates graphs in the `plots/example/Adult` folder:
 
 ```bash
 python ./src/TITANIA/result_statistics/create_dataset.py --dataset Adult --experiment=example
