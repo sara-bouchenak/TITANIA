@@ -343,7 +343,7 @@ This creates subfolders with the outputs in `outputs/FL_non_iid_settings/Adult/E
 
 Either run the following script
 ```bash
-python src/TITANIA/result_statistics/copy.py --date FOLDER_DATE
+python src/TITANIA/result_statistics/copy_traces.py --date FOLDER_DATE
 ```
 With `FOLDER_DATE` the date which should be your folder's name (for example 2026-04-14_11-44-41).
 

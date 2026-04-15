@@ -12,7 +12,10 @@ def main(date):
         if not os.path.isdir(new_path):
             os.makedirs(new_path)
         for file in filenames:
-            os.remove(new_path+"/"+file)
+            try:
+                os.remove(new_path+"/"+file)
+            except:
+                pass
             with open(dirpath+"/"+file, "r") as f:
                 with open(new_path+"/"+file, "w") as f2:
                     a="blank"
